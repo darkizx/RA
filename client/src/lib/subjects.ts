@@ -40,10 +40,10 @@ export const subjects: Record<string, Subject> = {
     nameEn: 'Physics',
     descriptionAr: 'الحركة والقوى والطاقة',
     descriptionEn: 'Motion, forces, and energy',
-    color: '#1B5E20',
-    bgColor: 'bg-green-900',
-    textColor: 'text-green-50',
-    accentColor: 'from-green-900 to-green-700',
+    color: '#1E40AF',
+    bgColor: 'bg-blue-900',
+    textColor: 'text-blue-50',
+    accentColor: 'from-blue-900 to-blue-700',
     icon: 'zap', // Using lucide-react icon name
     image: '/subject-physics-new.jpg',
     aiGreetingAr: 'مرحباً بك في عالم الحركة والقوى والطاقة! ⚡',
@@ -127,7 +127,7 @@ export const subjects: Record<string, Subject> = {
     descriptionEn: 'Religion, ethics, and worship',
     color: '#2E7D32',
     bgColor: 'bg-green-700',
-    textColor: 'text-green-50',
+    textColor: 'text-blue-50',
     accentColor: 'from-green-700 to-green-500',
     icon: 'leaf', // Using lucide-react icon name
     image: '/subject-islamic-new.jpg',

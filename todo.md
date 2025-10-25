@@ -1,6 +1,6 @@
 # Al Falah Academy - Smart Study Bot TODO
 
-**Status:** COMPLETE - Button colors now match each subject. Ready for final deployment.
+**Status:** Fixing physics button color and redesigning robot with animations.
 
 ## Core Features
 
@@ -80,4 +80,8 @@
 - [x] Improve material selection interface
 - [x] Enhance card design and styling
 - [x] Make 'Start Now' button color match subject color (red for math, blue for physics, etc.)
+- [ ] Fix Physics button color to blue (currently green)
+- [ ] Redesign robot to match modern GIF style (white and blue robot)
+- [ ] Add robot color changing based on selected subject
+- [ ] Add smooth animations to robot
 
