@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useLocation } from "wouter";
 import { Globe } from "lucide-react";
+import WelcomeBot from "@/components/WelcomeBot";
 
 export default function Home() {
   const { language, toggleLanguage, t } = useLanguage();
@@ -82,13 +83,24 @@ export default function Home() {
           {subjects.map((subject) => (
             <Card
               key={subject.id}
-              className={`cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-gradient-to-br ${subject.accentColor}`}
+              className={`cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group`}
               onClick={() => setLocation(`/subject/${subject.id}`)}
             >
-              <div className={`p-6 h-full flex flex-col justify-between ${subject.textColor}`}>
+              {/* Subject Image Background */}
+              <div className="relative h-48 overflow-hidden bg-slate-200">
+                <img
+                  src={subject.image}
+                  alt={isArabic ? subject.nameAr : subject.nameEn}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300"></div>
+              </div>
+
+              {/* Content Section */}
+              <div className={`p-6 bg-gradient-to-br ${subject.accentColor} ${subject.textColor}`}>
                 {/* Icon and Title */}
                 <div>
-                  <div className="text-5xl mb-4">{subject.icon}</div>
+                  <div className="text-4xl mb-3">{subject.icon}</div>
                   <h3 className="text-xl font-bold mb-2">
                     {isArabic ? subject.nameAr : subject.nameEn}
                   </h3>
@@ -100,7 +112,7 @@ export default function Home() {
                 </div>
 
                 {/* Arrow Indicator */}
-                <div className="mt-4 flex items-center gap-2 text-sm font-semibold">
+                <div className="mt-4 flex items-center gap-2 text-sm font-semibold group-hover:translate-x-1 transition-transform duration-300">
                   {isArabic ? "←" : "→"}
                   <span>
                     {isArabic ? "ابدأ الآن" : "Start Now"}
@@ -127,6 +139,9 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      {/* Welcome Bot */}
+      <WelcomeBot />
     </div>
   );
 }
