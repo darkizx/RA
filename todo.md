@@ -1,6 +1,6 @@
 # Al Falah Academy - Smart Study Bot TODO
 
-**Status:** COMPLETE - All images displaying perfectly in cards. Ready for deployment.
+**Status:** COMPLETE - Card layout redesigned perfectly. All images and text properly aligned. Ready for final deployment.
 
 ## Core Features
 
@@ -69,4 +69,5 @@
 ## Bug Fixes
 
 - [x] Fix subject images not displaying properly in cards (sizing and positioning issue)
+- [x] Redesign subject cards to match example layout (image on top, white section below with title and description)
 
