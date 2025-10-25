@@ -133,7 +133,13 @@ export default function Home() {
                 </div>
 
                 {/* Start Button */}
-                <button className="mt-4 w-full py-2 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                <button 
+                  className="mt-4 w-full py-2 px-4 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                  style={{
+                    backgroundColor: subject.color,
+                    backgroundImage: `linear-gradient(135deg, ${subject.color}, ${subject.accentColor})`
+                  }}
+                >
                   <span>{isArabic ? "ابدأ الآن" : "Start Now"}</span>
                   <span>{isArabic ? "←" : "→"}</span>
                 </button>
