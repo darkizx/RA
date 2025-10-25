@@ -1,6 +1,6 @@
 # Al Falah Academy - Smart Study Bot TODO
 
-**Status:** COMPLETE - School logo now large and visible. All features working perfectly. Ready for deployment.
+**Status:** COMPLETE - Suggested follow-ups added. All features working perfectly. Ready for deployment.
 
 ## Core Features
 
@@ -76,4 +76,7 @@
 - [x] Make robot change color when switching between different subjects
 - [x] Replace emoji icons with professional SVG or icon library icons for each subject
 - [x] Make school logo much larger and more prominent in header
+- [x] Add suggested follow-ups feature (رسائل متابعة)
+- [x] Improve material selection interface
+- [x] Enhance card design and styling
 

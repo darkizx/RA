@@ -28,6 +28,18 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const suggestedFollowUps = isArabic
+    ? [
+        "اشرح لي هذا المفهوم بطريقة ابسط",
+        "اعطني امثلة عملية",
+        "ما هي التطبيقات الحقيقية؟",
+      ]
+    : [
+        "Explain this concept in simpler terms",
+        "Give me practical examples",
+        "What are real-world applications?",
+      ];
+
   // tRPC mutation for AI chat
   const chatMutation = trpc.ai.chat.useMutation({
     onSuccess: (data) => {
@@ -202,6 +214,28 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
           )}
           <div ref={messagesEndRef} />
         </div>
+
+        {/* Suggested Follow-ups */}
+        {messages.length > 0 && (
+          <div className="mb-4 space-y-2">
+            <p className="text-sm font-medium text-slate-700">
+              {isArabic ? "اقتراحات متابعة:" : "Suggested follow-ups:"}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {suggestedFollowUps.map((suggestion) => (
+                <Button
+                  key={suggestion}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setInputValue(suggestion)}
+                  className="text-xs"
+                >
+                  {suggestion}
+                </Button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Input Area */}
         <div className="bg-white rounded-lg shadow-lg p-4">
