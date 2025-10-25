@@ -30,20 +30,20 @@ export default function Home() {
       dir={isArabic ? "rtl" : "ltr"}
     >
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <header className="bg-white shadow-lg sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-6 flex items-center justify-between">
           {/* Left Section - Logo and Title */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <img
-              src="/logo.png"
+              src="/al-falah-logo.png"
               alt="Al Falah Academy"
-              className="h-12 w-auto"
+              className="h-28 w-auto drop-shadow-xl"
             />
             <div>
-              <h1 className="text-2xl font-bold text-slate-800">
+              <h1 className="text-3xl font-bold text-slate-800">
                 {isArabic ? "أكاديمية الفلاح" : "Al Falah Academy"}
               </h1>
-              <p className="text-sm text-slate-600">
+              <p className="text-base text-slate-600 font-medium">
                 {isArabic
                   ? "مساعدك الدراسي الذكي"
                   : "Your Smart Study Assistant"}
