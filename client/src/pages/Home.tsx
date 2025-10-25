@@ -2,8 +2,20 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useLocation } from "wouter";
-import { Globe } from "lucide-react";
+import { Globe, Calculator, Zap, FlaskConical, Dna, BookOpen, Leaf, Map } from "lucide-react";
 import { subjects } from "@/lib/subjects";
+
+// Map icon names to lucide-react components
+const iconMap: Record<string, React.ReactNode> = {
+  calculator: <Calculator className="h-8 w-8" />,
+  zap: <Zap className="h-8 w-8" />,
+  flask: <FlaskConical className="h-8 w-8" />,
+  dna: <Dna className="h-8 w-8" />,
+  'book-open': <BookOpen className="h-8 w-8" />,
+  globe: <Globe className="h-8 w-8" />,
+  leaf: <Leaf className="h-8 w-8" />,
+  map: <Map className="h-8 w-8" />,
+};
 
 export default function Home() {
   const { language, toggleLanguage, t } = useLanguage();
@@ -101,8 +113,8 @@ export default function Home() {
                   style={{ objectPosition: 'center' }}
                 />
                 {/* Icon Badge in Top-Left */}
-                <div className="absolute top-3 left-3 bg-white rounded-full p-2 shadow-lg">
-                  <span className="text-2xl">{subject.icon}</span>
+                <div className="absolute top-3 left-3 bg-white rounded-full p-2 shadow-lg flex items-center justify-center">
+                  <div className="text-slate-700">{iconMap[subject.icon] || subject.icon}</div>
                 </div>
               </div>
 

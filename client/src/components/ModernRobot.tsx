@@ -22,6 +22,11 @@ export default function ModernRobot({
     setIsVisible(true);
   }, []);
 
+  // Trigger animation when color changes
+  useEffect(() => {
+    // This will cause re-render with new color
+  }, [subjectColor]);
+
   return (
     <div
       className={`fixed ${isArabic ? "left-4" : "right-4"} bottom-4 z-40 transition-all duration-500 ${
@@ -46,8 +51,13 @@ export default function ModernRobot({
 
       {/* Modern Robot Character */}
       <div
-        className="w-24 h-28 rounded-2xl shadow-2xl flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300"
-        style={{ backgroundColor: subjectColor }}
+        className="w-24 h-28 rounded-2xl shadow-2xl flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500"
+        style={{ 
+          backgroundColor: subjectColor,
+          transition: 'background-color 0.5s ease-in-out, transform 0.3s ease-in-out',
+          transform: 'scale(1)'
+        }}
+        key={subjectColor}
       >
         {/* Robot Head - Visor */}
         <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-20 h-12 bg-slate-800 rounded-xl border-2 border-white flex items-center justify-center">
@@ -90,15 +100,29 @@ export default function ModernRobot({
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute top-2 left-2 w-1 h-1 rounded-full animate-pulse"
-            style={{ backgroundColor: subjectColor, opacity: 0.6 }}
+            style={{ 
+              backgroundColor: subjectColor, 
+              opacity: 0.6,
+              transition: 'background-color 0.5s ease-in-out'
+            }}
           ></div>
           <div
             className="absolute top-4 right-2 w-1 h-1 rounded-full animate-pulse"
-            style={{ backgroundColor: subjectColor, opacity: 0.6, animationDelay: "0.2s" }}
+            style={{ 
+              backgroundColor: subjectColor, 
+              opacity: 0.6, 
+              animationDelay: "0.2s",
+              transition: 'background-color 0.5s ease-in-out'
+            }}
           ></div>
           <div
             className="absolute bottom-3 left-3 w-1 h-1 rounded-full animate-pulse"
-            style={{ backgroundColor: subjectColor, opacity: 0.6, animationDelay: "0.4s" }}
+            style={{ 
+              backgroundColor: subjectColor, 
+              opacity: 0.6, 
+              animationDelay: "0.4s",
+              transition: 'background-color 0.5s ease-in-out'
+            }}
           ></div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # Al Falah Academy - Smart Study Bot TODO
 
-**Status:** COMPLETE - Card layout redesigned perfectly. All images and text properly aligned. Ready for final deployment.
+**Status:** COMPLETE - Professional lucide-react icons added for all subjects. Robot color changing implemented. Ready for final deployment.
 
 ## Core Features
 
@@ -70,4 +70,9 @@
 
 - [x] Fix subject images not displaying properly in cards (sizing and positioning issue)
 - [x] Redesign subject cards to match example layout (image on top, white section below with title and description)
+
+## Enhancement Requests
+
+- [x] Make robot change color when switching between different subjects
+- [x] Replace emoji icons with professional SVG or icon library icons for each subject
 

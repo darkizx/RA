@@ -27,7 +27,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-red-900',
     textColor: 'text-red-50',
     accentColor: 'from-red-900 to-red-700',
-    icon: '🔴',
+    icon: 'calculator', // Using lucide-react icon name
     image: '/subject-mathematics-new.jpg',
     aiGreetingAr: 'مرحباً بك في عالم الأرقام والمعادلات الدقيقة! 🔢',
     aiGreetingEn: 'Welcome to the world of numbers and equations! 🔢',
@@ -44,7 +44,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-green-900',
     textColor: 'text-green-50',
     accentColor: 'from-green-900 to-green-700',
-    icon: '💚',
+    icon: 'zap', // Using lucide-react icon name
     image: '/subject-physics-new.jpg',
     aiGreetingAr: 'مرحباً بك في عالم الحركة والقوى والطاقة! ⚡',
     aiGreetingEn: 'Welcome to the world of motion, forces, and energy! ⚡',
@@ -61,7 +61,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-purple-900',
     textColor: 'text-purple-50',
     accentColor: 'from-purple-900 to-purple-700',
-    icon: '💜',
+    icon: 'flask', // Using lucide-react icon name
     image: '/subject-chemistry-new.jpg',
     aiGreetingAr: 'مرحباً بك في عالم العناصر والتفاعلات الكيميائية! 🧪',
     aiGreetingEn: 'Welcome to the world of elements and chemical reactions! 🧪',
@@ -78,7 +78,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-teal-900',
     textColor: 'text-teal-50',
     accentColor: 'from-teal-900 to-teal-700',
-    icon: '🧪',
+    icon: 'dna', // Using lucide-react icon name
     image: '/subject-biology-new.jpg',
     aiGreetingAr: 'مرحباً بك في رحلة الحياة والاكتشافات البيولوجية! 🔬',
     aiGreetingEn: 'Welcome to the journey of life and biology discoveries! 🔬',
@@ -95,7 +95,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-orange-900',
     textColor: 'text-orange-50',
     accentColor: 'from-orange-900 to-orange-700',
-    icon: '🍊',
+    icon: 'book-open', // Using lucide-react icon name
     image: '/subject-arabic-new.jpg',
     aiGreetingAr: 'مرحباً بك في عالم اللغة العربية الجميل! 📖',
     aiGreetingEn: 'Welcome to the beautiful world of Arabic language! 📖',
@@ -112,7 +112,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-blue-700',
     textColor: 'text-blue-50',
     accentColor: 'from-blue-700 to-blue-500',
-    icon: '💧',
+    icon: 'globe', // Using lucide-react icon name
     image: '/subject-english-new.jpg',
     aiGreetingAr: 'مرحباً بك في عالم اللغة الإنجليزية! 🌍',
     aiGreetingEn: 'Welcome to the world of English language! 🌍',
@@ -129,7 +129,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-green-700',
     textColor: 'text-green-50',
     accentColor: 'from-green-700 to-green-500',
-    icon: '🌿',
+    icon: 'leaf', // Using lucide-react icon name
     image: '/subject-islamic-new.jpg',
     aiGreetingAr: 'مرحباً بك في رحلة التعليم الإسلامي! 🕌',
     aiGreetingEn: 'Welcome to the journey of Islamic education! 🕌',
@@ -146,7 +146,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-amber-900',
     textColor: 'text-amber-50',
     accentColor: 'from-amber-900 to-amber-700',
-    icon: '🟤',
+    icon: 'map', // Using lucide-react icon name
     image: '/subject-social-new.jpg',
     aiGreetingAr: 'مرحباً بك في رحلة التاريخ والجغرافيا! 🗺️',
     aiGreetingEn: 'Welcome to the journey of history and geography! 🗺️',
