@@ -154,8 +154,7 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
               <ArrowLeft className="h-5 w-5" />
             </Button>
             <div>
-              <h1 className="text-3xl font-bold flex items-center gap-3">
-                <span>{subject.icon}</span>
+              <h1 className="text-3xl font-bold">
                 {isArabic ? subject.nameAr : subject.nameEn}
               </h1>
               <p className="text-sm opacity-90 mt-1">
@@ -299,6 +298,7 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
             : undefined
         }
         isActive={true}
+        isInChat={chatMutation.isPending}
       />
     </div>
   );

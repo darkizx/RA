@@ -127,9 +127,9 @@ export const subjects: Record<string, Subject> = {
     descriptionEn: 'Religion, ethics, and worship',
     color: '#2E7D32',
     bgColor: 'bg-green-700',
-    textColor: 'text-blue-50',
+    textColor: 'text-green-50',
     accentColor: 'from-green-700 to-green-500',
-    icon: 'leaf', // Using lucide-react icon name
+    icon: 'book-open', // Using lucide-react icon name
     image: '/subject-islamic-new.jpg',
     aiGreetingAr: 'مرحباً بك في رحلة التعليم الإسلامي! 🕌',
     aiGreetingEn: 'Welcome to the journey of Islamic education! 🕌',
@@ -146,7 +146,7 @@ export const subjects: Record<string, Subject> = {
     bgColor: 'bg-amber-900',
     textColor: 'text-amber-50',
     accentColor: 'from-amber-900 to-amber-700',
-    icon: 'map', // Using lucide-react icon name
+    icon: 'globe', // Using lucide-react icon name
     image: '/subject-social-new.jpg',
     aiGreetingAr: 'مرحباً بك في رحلة التاريخ والجغرافيا! 🗺️',
     aiGreetingEn: 'Welcome to the journey of history and geography! 🗺️',
