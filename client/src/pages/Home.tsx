@@ -83,17 +83,19 @@ export default function Home() {
           {subjects.map((subject) => (
             <Card
               key={subject.id}
-              className={`cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group`}
+              className={`cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group flex flex-col h-full`}
               onClick={() => setLocation(`/subject/${subject.id}`)}
             >
               {/* Subject Image Background */}
-              <div className="relative h-48 overflow-hidden bg-slate-200">
+              <div className="relative w-full h-56 overflow-hidden bg-slate-300 flex-shrink-0">
                 <img
                   src={subject.image}
                   alt={isArabic ? subject.nameAr : subject.nameEn}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  style={{ objectPosition: 'center' }}
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent group-hover:from-black/60 transition-colors duration-300"></div>
               </div>
 
               {/* Content Section */}
