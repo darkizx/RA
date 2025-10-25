@@ -1,29 +1,133 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getAllSubjects } from "@/lib/subjects";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { APP_LOGO, APP_TITLE, getLoginUrl } from "@/const";
+import { Card } from "@/components/ui/card";
+import { useLocation } from "wouter";
+import { Globe } from "lucide-react";
 
-/**
- * All content in this page are only for example, delete if unneeded
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
-  // Use APP_LOGO (as image src) and APP_TITLE if needed
+  const { language, toggleLanguage, t } = useLanguage();
+  const [, setLocation] = useLocation();
+  const subjects = getAllSubjects();
+  const isArabic = language === "ar";
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        <Loader2 className="animate-spin" />
-        Example Page
-        <Button variant="default">Example Button</Button>
+    <div
+      className={`min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 ${
+        isArabic ? "rtl" : "ltr"
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
+      {/* Header */}
+      <header className="bg-white shadow-md sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo and Title */}
+            <div className="flex items-center gap-4">
+              <img
+                src="/al-falah-logo.png"
+                alt="Al Falah Academy"
+                className="h-16 w-16 object-contain"
+              />
+              <div>
+                <h1 className="text-2xl font-bold text-slate-800">
+                  {t("app.title")}
+                </h1>
+                <p className="text-sm text-slate-600">{t("app.subtitle")}</p>
+              </div>
+            </div>
+
+            {/* Language Switcher */}
+            <Button
+              onClick={toggleLanguage}
+              variant="outline"
+              size="sm"
+              className="gap-2"
+            >
+              <Globe className="h-4 w-4" />
+              {language === "ar" ? "EN" : "AR"}
+            </Button>
+          </div>
+
+          {/* UAE Flag and Students */}
+          <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-200">
+            <img
+              src="/uae-flag.png"
+              alt="UAE Flag"
+              className="h-8 w-12 object-cover rounded"
+            />
+            <p className="text-sm font-medium text-slate-700">
+              {t("app.students")}
+            </p>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-12">
+        {/* Section Title */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-slate-800 mb-2">
+            {t("ui.selectSubject")}
+          </h2>
+          <p className="text-slate-600">
+            {isArabic
+              ? "اختر المادة الدراسية التي تريد الحصول على مساعدة فيها"
+              : "Choose a subject to get help with your studies"}
+          </p>
+        </div>
+
+        {/* Subject Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {subjects.map((subject) => (
+            <Card
+              key={subject.id}
+              className={`cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-gradient-to-br ${subject.accentColor}`}
+              onClick={() => setLocation(`/subject/${subject.id}`)}
+            >
+              <div className={`p-6 h-full flex flex-col justify-between ${subject.textColor}`}>
+                {/* Icon and Title */}
+                <div>
+                  <div className="text-5xl mb-4">{subject.icon}</div>
+                  <h3 className="text-xl font-bold mb-2">
+                    {isArabic ? subject.nameAr : subject.nameEn}
+                  </h3>
+                  <p className="text-sm opacity-90">
+                    {isArabic
+                      ? subject.descriptionAr
+                      : subject.descriptionEn}
+                  </p>
+                </div>
+
+                {/* Arrow Indicator */}
+                <div className="mt-4 flex items-center gap-2 text-sm font-semibold">
+                  {isArabic ? "←" : "→"}
+                  <span>
+                    {isArabic ? "ابدأ الآن" : "Start Now"}
+                  </span>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-slate-800 text-white mt-16 py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm">
+            {isArabic
+              ? "© 2024 أكاديمية الفلاح - مساعد الدراسة الذكي"
+              : "© 2024 Al Falah Academy - Smart Study Bot"}
+          </p>
+          <p className="text-xs text-slate-400 mt-2">
+            {isArabic
+              ? "تم تطويره بواسطة فريق الفلاح"
+              : "Developed by Al Falah Team"}
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
+
