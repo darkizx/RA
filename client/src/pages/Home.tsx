@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useLocation } from "wouter";
 import { Globe } from "lucide-react";
-import WelcomeBot from "@/components/WelcomeBot";
+
 
 export default function Home() {
   const { language, toggleLanguage, t } = useLanguage();
@@ -140,8 +140,7 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Welcome Bot */}
-      <WelcomeBot />
+
     </div>
   );
 }

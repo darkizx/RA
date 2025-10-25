@@ -7,6 +7,7 @@ import { useLocation } from "wouter";
 import { ArrowLeft, Send, Upload, Loader2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
+import ModernRobot from "@/components/ModernRobot";
 
 interface Message {
   id: string;
@@ -251,6 +252,20 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
           </div>
         </div>
       </main>
+
+      {/* Modern Robot with Subject Color */}
+      <ModernRobot
+        subjectColor={subject.color}
+        subjectName={isArabic ? subject.nameAr : subject.nameEn}
+        greeting={
+          showGreeting
+            ? isArabic
+              ? `أهلاً وسهلاً في ${subject.nameAr}! 👋`
+              : `Welcome to ${subject.nameEn}! 👋`
+            : undefined
+        }
+        isActive={true}
+      />
     </div>
   );
 }
