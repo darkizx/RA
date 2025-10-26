@@ -214,6 +214,21 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
           <div ref={messagesEndRef} />
         </div>
 
+        {/* Modern Robot with Subject Color - Above Input */}
+        <ModernRobot
+          subjectColor={subject.color}
+          subjectName={isArabic ? subject.nameAr : subject.nameEn}
+          greeting={
+            showGreeting
+              ? isArabic
+                ? `أهلاً وسهلاً في ${subject.nameAr}! 👋`
+                : `Welcome to ${subject.nameEn}! 👋`
+              : undefined
+          }
+          isActive={true}
+          isInChat={chatMutation.isPending}
+        />
+
         {/* Suggested Follow-ups */}
         {messages.length > 0 && (
           <div className="mb-4 space-y-2">
@@ -286,20 +301,7 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
         </div>
       </main>
 
-      {/* Modern Robot with Subject Color */}
-      <ModernRobot
-        subjectColor={subject.color}
-        subjectName={isArabic ? subject.nameAr : subject.nameEn}
-        greeting={
-          showGreeting
-            ? isArabic
-              ? `أهلاً وسهلاً في ${subject.nameAr}! 👋`
-              : `Welcome to ${subject.nameEn}! 👋`
-            : undefined
-        }
-        isActive={true}
-        isInChat={chatMutation.isPending}
-      />
+
     </div>
   );
 }

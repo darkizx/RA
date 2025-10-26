@@ -2,6 +2,8 @@
 
 **Status:** ✅ COMPLETE - All features implemented and tested successfully!
 
+**Latest Update:** Robot repositioned to avoid overlapping UI elements - now displays next to greeting message above chat input area.
+
 ## Core Features
 
 - [x] Home page with card-based subject selection grid
@@ -90,4 +92,8 @@
 - [x] Add pointing arm gesture that points to speech bubble
 - [x] Add waving arm animation during chat
 - [x] Improve robot color transitions and glowing effects
+- [x] Reposition robot from fixed bottom to relative layout
+- [x] Place robot next to greeting message (not overlapping)
+- [x] Move robot above suggested follow-ups and input area
+- [x] Test robot position on multiple subject pages
 

@@ -38,29 +38,13 @@ export default function ModernRobot({
 
   return (
     <div
-      className={`fixed ${isArabic ? "left-4" : "right-4"} bottom-4 z-40 transition-all duration-500 ${
+      className={`flex items-end gap-4 mb-6 transition-all duration-500 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
+      } ${isArabic ? "flex-row-reverse" : "flex-row"}`}
     >
-      {/* Speech Bubble */}
-      {greeting && (
-        <div
-          className={`bg-white rounded-xl shadow-lg p-4 max-w-xs mb-4 ${
-            isArabic ? "text-right" : "text-left"
-          }`}
-        >
-          <p className="text-sm font-medium text-slate-800">{greeting}</p>
-          {subjectName && (
-            <p className="text-xs text-slate-600 mt-1">
-              {isArabic ? "اخترت:" : "You selected:"} <strong>{subjectName}</strong>
-            </p>
-          )}
-        </div>
-      )}
-
       {/* Modern Robot Character - LARGER VERSION */}
       <div
-        className={`w-40 h-44 rounded-3xl shadow-2xl flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 cursor-pointer hover:shadow-3xl ${
+        className={`w-40 h-44 rounded-3xl shadow-2xl flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 cursor-pointer hover:shadow-3xl flex-shrink-0 ${
           isAnimating ? "animate-bounce" : ""
         }`}
         style={{ 
@@ -165,6 +149,22 @@ export default function ModernRobot({
           ></div>
         </div>
       </div>
+
+      {/* Speech Bubble - Next to Robot */}
+      {greeting && (
+        <div
+          className={`bg-white rounded-xl shadow-lg p-4 max-w-xs mb-4 flex-1 ${
+            isArabic ? "text-right" : "text-left"
+          }`}
+        >
+          <p className="text-sm font-medium text-slate-800">{greeting}</p>
+          {subjectName && (
+            <p className="text-xs text-slate-600 mt-1">
+              {isArabic ? "اخترت:" : "You selected:"} <strong>{subjectName}</strong>
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Animations */}
       <style>{`
