@@ -28,7 +28,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-red-50',
     accentColor: 'from-red-900 to-red-700',
     icon: 'calculator', // Using lucide-react icon name
-    image: '/subject-mathematics-new.jpg',
+    image: '/subjects/mathematics-card.png',
     aiGreetingAr: 'مرحباً بك في عالم الأرقام والمعادلات الدقيقة! 🔢',
     aiGreetingEn: 'Welcome to the world of numbers and equations! 🔢',
     systemPromptAr: 'أنت معلم رياضيات ذكي ومتخصص. تشرح المفاهيم الرياضية بطريقة واضحة وسهلة الفهم. تقدم أمثلة عملية وخطوات حل مفصلة.',
@@ -45,7 +45,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-blue-50',
     accentColor: 'from-blue-900 to-blue-700',
     icon: 'zap', // Using lucide-react icon name
-    image: '/subject-physics-new.jpg',
+    image: '/subjects/physics-card.png',
     aiGreetingAr: 'مرحباً بك في عالم الحركة والقوى والطاقة! ⚡',
     aiGreetingEn: 'Welcome to the world of motion, forces, and energy! ⚡',
     systemPromptAr: 'أنت معلم فيزياء متخصص وذكي. تشرح الظواهر الفيزيائية بطريقة مبسطة مع أمثلة من الحياة اليومية.',
@@ -62,7 +62,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-purple-50',
     accentColor: 'from-purple-900 to-purple-700',
     icon: 'flask', // Using lucide-react icon name
-    image: '/subject-chemistry-new.jpg',
+    image: '/subjects/chemistry-card.png',
     aiGreetingAr: 'مرحباً بك في عالم العناصر والتفاعلات الكيميائية! 🧪',
     aiGreetingEn: 'Welcome to the world of elements and chemical reactions! 🧪',
     systemPromptAr: 'أنت معلم كيمياء متخصص. تشرح التفاعلات والعناصر بطريقة واضحة مع معادلات موزونة.',
@@ -79,7 +79,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-teal-50',
     accentColor: 'from-teal-900 to-teal-700',
     icon: 'dna', // Using lucide-react icon name
-    image: '/subject-biology-new.jpg',
+    image: '/subjects/biology-card.png',
     aiGreetingAr: 'مرحباً بك في رحلة الحياة والاكتشافات البيولوجية! 🔬',
     aiGreetingEn: 'Welcome to the journey of life and biology discoveries! 🔬',
     systemPromptAr: 'أنت معلم أحياء متخصص وشغوف. تشرح العمليات البيولوجية والكائنات الحية بطريقة مشوقة.',
@@ -96,7 +96,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-orange-50',
     accentColor: 'from-orange-900 to-orange-700',
     icon: 'book-open', // Using lucide-react icon name
-    image: '/subject-arabic-new.jpg',
+    image: '/subjects/arabic-card.png',
     aiGreetingAr: 'مرحباً بك في عالم اللغة العربية الجميل! 📖',
     aiGreetingEn: 'Welcome to the beautiful world of Arabic language! 📖',
     systemPromptAr: 'أنت معلم لغة عربية متخصص وأديب. تشرح قواعد النحو والأدب بطريقة سلسة وممتعة.',
@@ -113,7 +113,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-blue-50',
     accentColor: 'from-blue-700 to-blue-500',
     icon: 'globe', // Using lucide-react icon name
-    image: '/subject-english-new.jpg',
+    image: '/subjects/english-card.png',
     aiGreetingAr: 'مرحباً بك في عالم اللغة الإنجليزية! 🌍',
     aiGreetingEn: 'Welcome to the world of English language! 🌍',
     systemPromptAr: 'أنت معلم لغة إنجليزية متخصص. تشرح القواعس والمفردات بطريقة سهلة وفعالة.',
@@ -130,7 +130,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-green-50',
     accentColor: 'from-green-700 to-green-500',
     icon: 'book-open', // Using lucide-react icon name
-    image: '/subject-islamic-new.jpg',
+    image: '/subjects/islamic-education-card.png',
     aiGreetingAr: 'مرحباً بك في رحلة التعليم الإسلامي! 🕌',
     aiGreetingEn: 'Welcome to the journey of Islamic education! 🕌',
     systemPromptAr: 'أنت معلم تربية إسلامية متخصص وحكيم. تشرح المفاهيم الإسلامية بحكمة وعمق.',
@@ -147,11 +147,45 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-amber-50',
     accentColor: 'from-amber-900 to-amber-700',
     icon: 'globe', // Using lucide-react icon name
-    image: '/subject-social-new.jpg',
+    image: '/subjects/social-studies-card.png',
     aiGreetingAr: 'مرحباً بك في رحلة التاريخ والجغرافيا! 🗺️',
     aiGreetingEn: 'Welcome to the journey of history and geography! 🗺️',
     systemPromptAr: 'أنت معلم دراسات اجتماعية متخصص. تشرح التاريخ والجغرافيا بطريقة شيقة وتفاعلية.',
     systemPromptEn: 'You are an intelligent social studies teacher. Explain history and geography engagingly and interactively.',
+  },
+  physical: {
+    id: 'physical',
+    nameAr: 'التربية البدنية',
+    nameEn: 'Physical Education',
+    descriptionAr: 'الرياضة والنشاط البدني',
+    descriptionEn: 'Sports and physical activity',
+    color: '#FFD700',
+    bgColor: 'bg-yellow-500',
+    textColor: 'text-yellow-900',
+    accentColor: 'from-yellow-500 to-yellow-400',
+    icon: 'activity',
+    image: '/subjects/physical-education-card.png',
+    aiGreetingAr: 'مرحباً بك في عالم الرياضة واللياقة البدنية! ⚽',
+    aiGreetingEn: 'Welcome to the world of sports and fitness! ⚽',
+    systemPromptAr: 'أنت معلم تربية بدنية متخصص وحماسي. تشرح تقنيات الرياضة والنشاط البدني بطريقة مشوقة وآمنة.',
+    systemPromptEn: 'You are an intelligent and enthusiastic physical education teacher. Explain sports techniques and physical activity safely and engagingly.',
+  },
+  health: {
+    id: 'health',
+    nameAr: 'العلوم الصحية',
+    nameEn: 'Health Sciences',
+    descriptionAr: 'الصحة والتغذية والعافية',
+    descriptionEn: 'Health, nutrition, and wellness',
+    color: '#00CED1',
+    bgColor: 'bg-cyan-600',
+    textColor: 'text-cyan-50',
+    accentColor: 'from-cyan-600 to-cyan-500',
+    icon: 'heart',
+    image: '/subjects/health-sciences-card.png',
+    aiGreetingAr: 'مرحباً بك في عالم العلوم الصحية والعافية! 💚',
+    aiGreetingEn: 'Welcome to the world of health sciences and wellness! 💚',
+    systemPromptAr: 'أنت معلم علوم صحية متخصص وعارف. تشرح مفاهيم الصحة والتغذية والعافية بطريقة علمية وسهلة الفهم.',
+    systemPromptEn: 'You are an intelligent health sciences teacher. Explain health, nutrition, and wellness concepts scientifically and clearly.',
   },
 };
 

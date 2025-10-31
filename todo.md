@@ -97,3 +97,28 @@
 - [x] Move robot above suggested follow-ups and input area
 - [x] Test robot position on multiple subject pages
 
+
+
+
+## Image Design Fixes (In Progress)
+
+- [ ] Fix Social Studies card - remove white circle from globe icon
+- [ ] Fix Islamic Education card - remove white circle from book icon
+- [ ] Fix English Language card - improve Arabic text rendering
+- [ ] Fix Biology card - remove overlapping icons in corner
+- [ ] Fix Chemistry card - improve design balance
+- [ ] Fix Physics card - improve design balance
+- [ ] Update all subject images with corrected designs
+- [ ] Test all subject cards on home page
+
+
+
+- [x] Create Physical Education (Sports) subject card - yellow color
+- [x] Create Health Sciences subject card - professional color
+- [x] Add Physical Education to subjects list
+- [x] Add Health Sciences to subjects list
+- [x] Update Home.tsx to display 10 subjects
+- [x] Fix image paths in subjects.ts to match actual PNG files
+- [x] Test all 10 subjects with correct images and colors
+- [x] Verify robot animations work on new subjects
+
