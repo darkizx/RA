@@ -122,17 +122,3 @@
 - [x] Test all 10 subjects with correct images and colors
 - [x] Verify robot animations work on new subjects
 
-
-
-## Image Sizing Fixes (Completed)
-- [x] Regenerate all 10 subject cards with consistent aspect ratio and sizing
-- [x] Ensure all images properly fit the card layout
-- [x] Test image display on home page
-- [x] Verify robot works correctly with new images
-
-## Arabic Spelling Fixes (Completed)
-- [x] Fix Biology card spelling: "الأحياء" (correct spelling)
-- [x] Fix Islamic Education card spelling: "التربية الإسلامية" (with hamza on ya)
-- [x] Test corrected images on home page
-- [x] Verify all text renders correctly
-
