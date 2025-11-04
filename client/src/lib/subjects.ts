@@ -164,7 +164,7 @@ export const subjects: Record<string, Subject> = {
     textColor: 'text-yellow-900',
     accentColor: 'from-yellow-500 to-yellow-400',
     icon: 'activity',
-    image: '/subjects/physical-education-card.png',
+    image: '/subjects/pe-sports-card.png',
     aiGreetingAr: 'مرحباً بك في عالم الرياضة واللياقة البدنية! ⚽',
     aiGreetingEn: 'Welcome to the world of sports and fitness! ⚽',
     systemPromptAr: 'أنت معلم تربية بدنية متخصص وحماسي. تشرح تقنيات الرياضة والنشاط البدني بطريقة مشوقة وآمنة.',
