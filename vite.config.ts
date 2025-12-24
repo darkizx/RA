@@ -6,8 +6,19 @@ import path from "path";
 import { defineConfig } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
+// Plugin to replace environment variables in HTML
+const htmlEnvPlugin = () => ({
+  name: "html-env-plugin",
+  transformIndexHtml(html: string) {
+    return html
+      .replace(/%VITE_APP_TITLE%/g, process.env.VITE_APP_TITLE || "Al Falah Academy")
+      .replace(/%VITE_APP_LOGO%/g, process.env.VITE_APP_LOGO || "https://placehold.co/128x128")
+      .replace(/%VITE_ANALYTICS_ENDPOINT%/g, process.env.VITE_ANALYTICS_ENDPOINT || "")
+      .replace(/%VITE_ANALYTICS_WEBSITE_ID%/g, process.env.VITE_ANALYTICS_WEBSITE_ID || "");
+  },
+});
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime()];
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), htmlEnvPlugin()];
 
 export default defineConfig({
   plugins,
