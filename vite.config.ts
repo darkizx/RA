@@ -10,11 +10,16 @@ import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 const htmlEnvPlugin = () => ({
   name: "html-env-plugin",
   transformIndexHtml(html: string) {
+    const appTitle = process.env.VITE_APP_TITLE || "Al Falah Academy";
+    const appLogo = process.env.VITE_APP_LOGO || "/al-falah-logo.png";
+    const analyticsEndpoint = process.env.VITE_ANALYTICS_ENDPOINT || "";
+    const analyticsWebsiteId = process.env.VITE_ANALYTICS_WEBSITE_ID || "";
+    
     return html
-      .replace(/%VITE_APP_TITLE%/g, process.env.VITE_APP_TITLE || "Al Falah Academy")
-      .replace(/%VITE_APP_LOGO%/g, process.env.VITE_APP_LOGO || "https://placehold.co/128x128")
-      .replace(/%VITE_ANALYTICS_ENDPOINT%/g, process.env.VITE_ANALYTICS_ENDPOINT || "")
-      .replace(/%VITE_ANALYTICS_WEBSITE_ID%/g, process.env.VITE_ANALYTICS_WEBSITE_ID || "");
+      .replace(/%VITE_APP_TITLE%/g, appTitle)
+      .replace(/%VITE_APP_LOGO%/g, appLogo)
+      .replace(/%VITE_ANALYTICS_ENDPOINT%/g, analyticsEndpoint)
+      .replace(/%VITE_ANALYTICS_WEBSITE_ID%/g, analyticsWebsiteId);
   },
 });
 

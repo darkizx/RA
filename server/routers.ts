@@ -64,8 +64,9 @@ export const appRouter = router({
             success: true,
           };
         } catch (error) {
-          console.error("Error calling Gemini API:", error);
-          throw new Error("Failed to get AI response");
+          const errorMessage = error instanceof Error ? error.message : String(error);
+          console.error("Error calling Gemini API:", errorMessage);
+          throw new Error(`Failed to get AI response: ${errorMessage}`);
         }
       }),
   }),
