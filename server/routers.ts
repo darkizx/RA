@@ -56,8 +56,7 @@ export const appRouter = router({
           });
 
           // Extract the text content from the response
-          const reply =
-            response.choices?.[0]?.message?.content || "No response received";
+          const reply = response.content || "No response received";
 
           return {
             reply: typeof reply === "string" ? reply : JSON.stringify(reply),
