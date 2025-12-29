@@ -231,18 +231,16 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
 
         {/* Suggested Follow-ups */}
         {messages.length > 0 && (
-          <div className="mb-4 space-y-2">
-            <p className="text-sm font-medium text-slate-700">
+          <div className="mb-4 space-y-3">
+            <p className="text-base font-bold text-slate-800">
               {isArabic ? "اقتراحات متابعة:" : "Suggested follow-ups:"}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {suggestedFollowUps.map((suggestion) => (
                 <Button
                   key={suggestion}
-                  variant="outline"
-                  size="sm"
                   onClick={() => setInputValue(suggestion)}
-                  className="text-xs"
+                  className="bg-white text-slate-800 border-2 border-white hover:bg-slate-100 font-semibold text-sm px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   {suggestion}
                 </Button>
