@@ -41,7 +41,7 @@ export default function Home() {
             />
             <div>
               <h1 className="text-3xl font-bold text-slate-800">
-                {isArabic ? "أكاديمية الفلاح" : "Al Falah Academy"}
+                {isArabic ? "مدرسة الفلاح الخاصة" : "Al Falah Private School"}
               </h1>
               <p className="text-base text-slate-600 font-medium">
                 {isArabic
@@ -154,8 +154,8 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm opacity-75">
             {isArabic
-              ? "© أكاديمية الفلاح 2024 - مساعدك الدراسي الذكي"
-              : "© Al Falah Academy 2024 - Your Smart Study Assistant"}
+              ? "© مدرسة الفلاح الخاصة 2026 - مساعدك الدراسي الذكي"
+              : "© Al Falah Private School 2026 - Your Smart Study Assistant"}
           </p>
           <p className="text-xs opacity-50 mt-2">
             {isArabic
