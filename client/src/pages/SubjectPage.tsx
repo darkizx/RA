@@ -1,4 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { getSubject } from "@/lib/subjects";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,6 +19,7 @@ interface Message {
 
 export default function SubjectPage({ params }: { params: { id: string } }) {
   const { language, t } = useLanguage();
+  const { theme } = useTheme();
   const [, setLocation] = useLocation();
   const subject = getSubject(params.id);
   const isArabic = language === "ar";
@@ -136,7 +138,11 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
 
   return (
     <div
-      className={`min-h-screen bg-gradient-to-br ${subject.accentColor} ${
+      className={`min-h-screen ${
+        theme === "dark"
+          ? "bg-slate-900"
+          : `bg-gradient-to-br ${subject.accentColor}`
+      } ${
         isArabic ? "rtl" : "ltr"
       }`}
       dir={isArabic ? "rtl" : "ltr"}
@@ -186,6 +192,8 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
                 className={`max-w-xs lg:max-w-md px-4 py-3 ${
                   message.role === "user"
                     ? `${subject.bgColor} ${subject.textColor}`
+                    : theme === "dark"
+                    ? "bg-slate-700 text-white"
                     : "bg-white text-slate-800"
                 }`}
               >
@@ -201,7 +209,11 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
           ))}
           {chatMutation.isPending && (
             <div className="flex justify-start">
-              <Card className="bg-white text-slate-800 px-4 py-3">
+              <Card className={`${
+                theme === "dark"
+                  ? "bg-slate-700 text-white"
+                  : "bg-white text-slate-800"
+              } px-4 py-3`}>
                 <div className="flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
                   <p className="text-sm">
@@ -232,7 +244,9 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
         {/* Suggested Follow-ups */}
         {messages.length > 0 && (
           <div className="mb-4 space-y-3">
-            <p className="text-base font-bold text-slate-800">
+            <p className={`text-base font-bold ${
+              theme === "dark" ? "text-white" : "text-slate-800"
+            }`}>
               {isArabic ? "اقتراحات متابعة:" : "Suggested follow-ups:"}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -250,7 +264,9 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
         )}
 
         {/* Input Area */}
-        <div className="bg-white rounded-lg shadow-lg p-4">
+        <div className={`${
+          theme === "dark" ? "bg-slate-800" : "bg-white"
+        } rounded-lg shadow-lg p-4`}>
           <div className="flex gap-2">
             <Input
               type="text"
