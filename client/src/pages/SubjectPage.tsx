@@ -189,9 +189,9 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
       </header>
 
       {/* Chat Area */}
-      <main className="container mx-auto px-4 py-8 h-[calc(100vh-200px)] flex flex-col">
+      <main className="w-full px-2 sm:px-4 py-4 sm:py-8 h-[calc(100vh-180px)] sm:h-[calc(100vh-200px)] flex flex-col bg-gradient-to-b from-transparent">
         {/* Messages Container */}
-        <div className="flex-1 overflow-y-auto mb-6 space-y-4">
+        <div className="flex-1 overflow-y-auto mb-4 sm:mb-6 space-y-2 sm:space-y-4 px-1 sm:px-0">
           {messages.map((message) => (
             <div
               key={message.id}
@@ -206,7 +206,7 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
               }`}
             >
               <Card
-                className={`max-w-xs lg:max-w-md px-4 py-3 ${
+                className={`max-w-[85%] sm:max-w-xs lg:max-w-md px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base ${
                   message.role === "user"
                     ? `${subject.bgColor} ${subject.textColor}`
                     : theme === "dark"
@@ -214,8 +214,8 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
                     : "bg-white text-slate-800"
                 }`}
               >
-                <p className="text-sm">{message.content}</p>
-                <p className="text-xs opacity-70 mt-1">
+                <p className="text-xs sm:text-sm leading-relaxed">{message.content}</p>
+                <p className="text-[10px] sm:text-xs opacity-70 mt-1">
                   {message.timestamp.toLocaleTimeString(
                     isArabic ? "ar-SA" : "en-US",
                     { hour: "2-digit", minute: "2-digit" }
@@ -230,10 +230,10 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
                 theme === "dark"
                   ? "bg-slate-700 text-white"
                   : "bg-white text-slate-800"
-              } px-4 py-3`}>
+              } px-3 sm:px-4 py-2 sm:py-3`}>
                 <div className="flex items-center gap-2">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  <p className="text-sm">
+                  <Loader2 className="h-3 sm:h-4 w-3 sm:w-4 animate-spin" />
+                  <p className="text-xs sm:text-sm">
                     {isArabic ? "جاري الكتابة..." : "Typing..."}
                   </p>
                 </div>
@@ -261,17 +261,17 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
         {/* Suggested Follow-ups */}
         {messages.length > 0 && (
           <div className="mb-4 space-y-3">
-            <p className={`text-base font-bold ${
+            <p className={`text-sm sm:text-base font-bold ${
               theme === "dark" ? "text-white" : "text-slate-800"
             }`}>
               {isArabic ? "اقتراحات متابعة:" : "Suggested follow-ups:"}
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {suggestedFollowUps.map((suggestion) => (
                 <Button
                   key={suggestion}
                   onClick={() => setInputValue(suggestion)}
-                  className="bg-white text-slate-800 border-2 border-white hover:bg-slate-100 font-semibold text-sm px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                  className="bg-white text-slate-800 border-2 border-white hover:bg-slate-100 font-semibold text-xs sm:text-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 whitespace-nowrap"
                 >
                   {suggestion}
                 </Button>
@@ -283,8 +283,8 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
         {/* Input Area */}
         <div className={`${
           theme === "dark" ? "bg-slate-800" : "bg-white"
-        } rounded-lg shadow-lg p-4`}>
-          <div className="flex gap-2">
+        } rounded-lg shadow-lg p-3 sm:p-4 sticky bottom-0`}>
+          <div className="flex gap-2 items-center">
             <Input
               type="text"
               placeholder={
@@ -300,7 +300,7 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
                 }
               }}
               disabled={chatMutation.isPending}
-              className="flex-1"
+              className="flex-1 text-sm sm:text-base h-10 sm:h-auto"
             />
             <input
               ref={fileInputRef}
@@ -314,13 +314,14 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
               size="icon"
               onClick={() => fileInputRef.current?.click()}
               disabled={chatMutation.isPending}
+              className="h-10 w-10 sm:h-auto sm:w-auto flex-shrink-0"
             >
               <Upload className="h-4 w-4" />
             </Button>
             <Button
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || chatMutation.isPending}
-              className={`${subject.bgColor} ${subject.textColor} hover:opacity-90`}
+              className={`${subject.bgColor} ${subject.textColor} hover:opacity-90 h-10 w-10 sm:h-auto sm:w-auto flex-shrink-0 p-2 sm:p-0`}
             >
               {chatMutation.isPending ? (
                 <Loader2 className="h-4 w-4 animate-spin" />

@@ -41,21 +41,21 @@ export default function Home() {
           ? "bg-slate-800 border-b border-slate-700"
           : "bg-white"
       } shadow-lg sticky top-0 z-50`}>
-        <div className="container mx-auto px-4 py-6 flex items-center justify-between">
+        <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-6 flex items-center justify-between gap-2 sm:gap-4">
           {/* Left Section - Logo and Title */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 sm:gap-6 flex-1 min-w-0">
             <img
               src="/al-falah-logo.png"
               alt="Al Falah Academy"
-              className="h-28 w-auto drop-shadow-xl"
+              className="h-16 sm:h-28 w-auto drop-shadow-xl flex-shrink-0"
             />
-            <div>
-              <h1 className={`text-3xl font-bold ${
+            <div className="hidden sm:block">
+              <h1 className={`text-2xl sm:text-3xl font-bold ${
               theme === "dark" ? "text-white" : "text-slate-800"
             }`}>
                 {isArabic ? "مدرسة الفلاح الخاصة" : "Al Falah Private School"}
               </h1>
-              <p className={`text-base font-medium ${
+              <p className={`text-xs sm:text-base font-medium ${
                 theme === "dark" ? "text-slate-300" : "text-slate-600"
               }`}>
                 {isArabic
@@ -66,13 +66,13 @@ export default function Home() {
           </div>
 
           {/* Center Section - Student Names */}
-          <div className="text-center hidden md:block">
-            <p className={`text-sm font-medium ${
+          <div className="text-center hidden lg:block">
+            <p className={`text-xs sm:text-sm font-medium ${
               theme === "dark" ? "text-slate-300" : "text-slate-700"
             }`}>
               {isArabic ? "الطلاب:" : "Students:"}
             </p>
-            <p className={`text-sm ${
+            <p className={`text-xs sm:text-sm ${
               theme === "dark" ? "text-slate-400" : "text-slate-600"
             }`}>
               محمد عبدالله و مبين عبدالله
@@ -80,32 +80,32 @@ export default function Home() {
           </div>
 
           {/* Right Section - Flag, Language, and Theme */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1 sm:gap-4 flex-shrink-0">
             <img
               src="/uae-flag.png"
               alt="UAE Flag"
-              className="h-8 w-auto"
+              className="h-6 sm:h-8 w-auto"
             />
             <Button
               variant="outline"
               size="sm"
               onClick={toggleLanguage}
-              className="flex items-center gap-2"
+              className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3 h-8 sm:h-auto"
             >
-              <Globe className="h-4 w-4" />
-              {language.toUpperCase()}
+              <Globe className="h-3 sm:h-4 w-3 sm:w-4" />
+              <span className="hidden sm:inline">{language.toUpperCase()}</span>
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={toggleTheme}
-              className="flex items-center gap-2"
+              className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3 h-8 sm:h-auto"
               title={theme === "dark" ? "Light Mode" : "Dark Mode"}
             >
               {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
+                <Sun className="h-3 sm:h-4 w-3 sm:w-4" />
               ) : (
-                <Moon className="h-4 w-4" />
+                <Moon className="h-3 sm:h-4 w-3 sm:w-4" />
               )}
             </Button>
           </div>
@@ -131,7 +131,7 @@ export default function Home() {
         </div>
 
         {/* Subject Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 max-w-6xl mx-auto px-2 sm:px-0">
           {Object.values(subjects).map((subject: any) => (
             <Card
               key={subject.id}
@@ -141,7 +141,7 @@ export default function Home() {
               onClick={() => setLocation(`/subject/${subject.id}`)}
             >
               {/* Subject Image - Full Width */}
-              <div className="relative w-full h-48 overflow-hidden bg-slate-300 flex-shrink-0">
+              <div className="relative w-full h-40 sm:h-48 overflow-hidden bg-slate-300 flex-shrink-0">
                 <img
                   src={subject.image}
                   alt={isArabic ? subject?.nameAr : subject?.nameEn}
@@ -156,17 +156,17 @@ export default function Home() {
               </div>
 
               {/* White Content Section Below Image */}
-              <div className={`p-6 ${
+              <div className={`p-4 sm:p-6 ${
                 theme === "dark" ? "bg-slate-700" : "bg-white"
               } flex-grow flex flex-col justify-between`}>
                 {/* Title and Description */}
                 <div>
-                  <h3 className={`text-lg font-bold ${
+                  <h3 className={`text-base sm:text-lg font-bold ${
                     theme === "dark" ? "text-white" : "text-slate-800"
                   } mb-2`}>
                     {isArabic ? subject.nameAr : subject.nameEn}
                   </h3>
-                  <p className={`text-sm ${
+                  <p className={`text-xs sm:text-sm ${
                     theme === "dark" ? "text-slate-300" : "text-slate-600"
                   } line-clamp-2`}>
                     {isArabic
@@ -177,7 +177,7 @@ export default function Home() {
 
                 {/* Start Button */}
                 <button 
-                  className="mt-4 w-full py-2 px-4 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                  className="mt-3 sm:mt-4 w-full py-2 sm:py-3 px-4 text-white font-semibold text-sm sm:text-base rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
                   style={{
                     backgroundColor: subject.color,
                     backgroundImage: `linear-gradient(135deg, ${subject.color}, ${subject.accentColor})`
