@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useLocation } from "wouter";
-import { ArrowLeft, Send, Upload, Loader2 } from "lucide-react";
+import { ArrowLeft, Send, Upload, Loader2, Sun, Moon } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import ModernRobot from "@/components/ModernRobot";
@@ -19,7 +19,7 @@ interface Message {
 
 export default function SubjectPage({ params }: { params: { id: string } }) {
   const { language, t } = useLanguage();
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const [, setLocation] = useLocation();
   const subject = getSubject(params.id);
   const isArabic = language === "ar";
@@ -150,23 +150,40 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
       {/* Header */}
       <header className={`${subject.bgColor} ${subject.textColor} shadow-lg`}>
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setLocation("/")}
-              className={`${subject.textColor} hover:opacity-80`}
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <div>
-              <h1 className="text-3xl font-bold">
-                {isArabic ? subject.nameAr : subject.nameEn}
-              </h1>
-              <p className="text-sm opacity-90 mt-1">
-                {isArabic ? subject.descriptionAr : subject.descriptionEn}
-              </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setLocation("/")}
+                className={`${subject.textColor} hover:opacity-80`}
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+              <div>
+                <h1 className="text-3xl font-bold">
+                  {isArabic ? subject.nameAr : subject.nameEn}
+                </h1>
+                <p className="text-sm opacity-90 mt-1">
+                  {isArabic ? subject.descriptionAr : subject.descriptionEn}
+                </p>
+              </div>
             </div>
+            {toggleTheme && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className={`${subject.textColor} hover:opacity-80`}
+                title={theme === "dark" ? "Light Mode" : "Dark Mode"}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </Button>
+            )}
           </div>
         </div>
       </header>
