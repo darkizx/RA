@@ -557,6 +557,8 @@ async function invokeLLM(params) {
   if (!apiKey || apiKey.trim().length === 0) {
     throw new Error("Gemini API key not configured. Please set GEMINI_API_KEY environment variable.");
   }
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 3e4);
   try {
     const response = await fetch(
       "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
@@ -566,11 +568,12 @@ async function invokeLLM(params) {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${apiKey}`
         },
+        signal: controller.signal,
         body: JSON.stringify({
           model: "gemini-2.0-flash",
           messages: params.messages,
           temperature: params.temperature ?? 0.7,
-          max_tokens: params.max_tokens ?? 2048
+          max_tokens: params.concise ? params.max_tokens ?? 150 : params.max_tokens ?? 2048
         })
       }
     );
@@ -594,6 +597,8 @@ async function invokeLLM(params) {
       throw new Error(`Failed to get AI response: ${error.message}`);
     }
     throw error;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
@@ -797,15 +802,20 @@ var appRouter = router({
       z2.object({
         subjectId: z2.string(),
         message: z2.string(),
-        language: z2.enum(["ar", "en"])
+        language: z2.enum(["ar", "en"]),
+        concise: z2.boolean().optional().default(false)
       })
     ).mutation(async ({ input }) => {
-      const { subjectId, message, language } = input;
+      const { subjectId, message, language, concise } = input;
       const subject = subjects[subjectId];
       if (!subject) {
         throw new Error("Subject not found");
       }
-      const systemPrompt = language === "ar" ? subject.systemPromptAr : subject.systemPromptEn;
+      let systemPrompt = language === "ar" ? subject.systemPromptAr : subject.systemPromptEn;
+      if (concise) {
+        const conciseInstruction = language === "ar" ? "\n\n\u0623\u062C\u0628 \u0628\u0625\u062C\u0627\u0628\u0629 \u0645\u062E\u062A\u0635\u0631\u0629 \u062C\u062F\u0627\u064B (\u062C\u0645\u0644\u0629 \u0623\u0648 \u062C\u0645\u0644\u062A\u064A\u0646 \u0641\u0642\u0637). \u0627\u0630\u0643\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0645\u0628\u0627\u0634\u0631\u0629 \u0628\u062F\u0648\u0646 \u0634\u0631\u062D \u0637\u0648\u064A\u0644." : "\n\nRespond with a very brief answer (1-2 sentences only). Give the direct answer without lengthy explanation.";
+        systemPrompt += conciseInstruction;
+      }
       try {
         const response = await invokeLLM({
           messages: [
@@ -817,9 +827,13 @@ var appRouter = router({
               role: "user",
               content: message
             }
-          ]
+          ],
+          concise
         });
-        const reply = response.content || "No response received";
+        let reply = response.content || "No response received";
+        if (concise && typeof reply === "string" && reply.length > 300) {
+          reply = reply.substring(0, 300).trim() + "...";
+        }
         return {
           reply: typeof reply === "string" ? reply : JSON.stringify(reply),
           success: true
