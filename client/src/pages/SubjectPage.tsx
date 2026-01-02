@@ -173,12 +173,15 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
             </div>
             <div className="flex items-center gap-2">
               <Button
-                variant="ghost"
                 size="sm"
                 onClick={() => setConciseMode(!conciseMode)}
-                className={`${subject.textColor} hover:opacity-80 text-xs sm:text-sm`}
+                className={`font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 rounded-lg transition-all duration-300 ${
+                  conciseMode
+                    ? "bg-green-600 hover:bg-green-700 text-white shadow-lg"
+                    : "bg-red-600 hover:bg-red-700 text-white shadow-lg"
+                }`}
               >
-                {conciseMode ? (isArabic ? "مختصر" : "Concise") : (isArabic ? "مفصل" : "Detailed")}
+                {conciseMode ? (isArabic ? "✓ مختصر" : "✓ Concise") : (isArabic ? "📖 مفصل" : "📖 Detailed")}
               </Button>
               {toggleTheme && (
                 <Button
