@@ -27,10 +27,11 @@ export const appRouter = router({
           subjectId: z.string(),
           message: z.string(),
           language: z.enum(["ar", "en"]),
+          concise: z.boolean().optional().default(false),
         })
       )
       .mutation(async ({ input }) => {
-        const { subjectId, message, language } = input;
+        const { subjectId, message, language, concise } = input;
         const subject = subjects[subjectId as keyof typeof subjects];
 
         if (!subject) {
@@ -38,8 +39,16 @@ export const appRouter = router({
         }
 
         // Get the appropriate system prompt based on language
-        const systemPrompt =
+        let systemPrompt =
           language === "ar" ? subject.systemPromptAr : subject.systemPromptEn;
+        
+        // Add concise mode instruction if requested
+        if (concise) {
+          const conciseInstruction = language === "ar" 
+            ? "\n\nأجب بإجابة مختصرة جداً (جملة أو جملتين فقط). اذكر الإجابة مباشرة بدون شرح طويل."
+            : "\n\nRespond with a very brief answer (1-2 sentences only). Give the direct answer without lengthy explanation.";
+          systemPrompt += conciseInstruction;
+        }
 
         try {
           const response = await invokeLLM({
@@ -53,10 +62,16 @@ export const appRouter = router({
                 content: message,
               },
             ],
+            concise: concise,
           });
 
           // Extract the text content from the response
-          const reply = response.content || "No response received";
+          let reply = response.content || "No response received";
+          
+          // Ensure concise mode returns short responses
+          if (concise && typeof reply === "string" && reply.length > 300) {
+            reply = reply.substring(0, 300).trim() + "...";
+          }
 
           return {
             reply: typeof reply === "string" ? reply : JSON.stringify(reply),

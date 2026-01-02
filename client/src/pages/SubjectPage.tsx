@@ -27,6 +27,7 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [showGreeting, setShowGreeting] = useState(true);
+  const [conciseMode, setConciseMode] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -102,6 +103,7 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
       subjectId: subject.id,
       message: inputValue,
       language,
+      concise: conciseMode,
     });
   };
 
@@ -169,21 +171,30 @@ export default function SubjectPage({ params }: { params: { id: string } }) {
                 </p>
               </div>
             </div>
-            {toggleTheme && (
+            <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className={`${subject.textColor} hover:opacity-80`}
-                title={theme === "dark" ? "Light Mode" : "Dark Mode"}
+                size="sm"
+                onClick={() => setConciseMode(!conciseMode)}
+                className={`${subject.textColor} hover:opacity-80 text-xs sm:text-sm`}
               >
-                {theme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
+                {conciseMode ? (isArabic ? "مختصر" : "Concise") : (isArabic ? "مفصل" : "Detailed")}
               </Button>
-            )}
+              {toggleTheme && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleTheme}
+                  className={`${subject.textColor} hover:opacity-80`}
+                >
+                  {theme === "dark" ? (
+                    <Sun className="h-5 w-5" />
+                  ) : (
+                    <Moon className="h-5 w-5" />
+                  )}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </header>

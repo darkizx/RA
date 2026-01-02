@@ -23,12 +23,17 @@ export async function invokeLLM(params: {
   messages: Message[];
   temperature?: number;
   max_tokens?: number;
+  concise?: boolean;
 }): Promise<LLMResponse> {
   const apiKey = ENV.geminiApiKey;
   
   if (!apiKey || apiKey.trim().length === 0) {
     throw new Error("Gemini API key not configured. Please set GEMINI_API_KEY environment variable.");
   }
+
+  // Set timeout for faster response
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
   try {
     const response = await fetch(
@@ -39,11 +44,12 @@ export async function invokeLLM(params: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${apiKey}`,
         },
+        signal: controller.signal,
         body: JSON.stringify({
           model: "gemini-2.0-flash",
           messages: params.messages,
           temperature: params.temperature ?? 0.7,
-          max_tokens: params.max_tokens ?? 2048,
+          max_tokens: params.concise ? (params.max_tokens ?? 150) : (params.max_tokens ?? 2048),
         }),
       }
     );
@@ -71,5 +77,7 @@ export async function invokeLLM(params: {
       throw new Error(`Failed to get AI response: ${error.message}`);
     }
     throw error;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
