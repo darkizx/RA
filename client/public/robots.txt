@@ -1,2 +1,30 @@
+# Allow all search engines to crawl the website
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: /admin/
+Disallow: /private/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Allow: /subject/
+Allow: /search/
+Crawl-delay: 1
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Allow: /subject/
+Allow: /search/
+Crawl-delay: 1
+
+# Specific rules for other bots
+User-agent: *
+Allow: /
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://alfalah2026.onrender.com/sitemap.xml
